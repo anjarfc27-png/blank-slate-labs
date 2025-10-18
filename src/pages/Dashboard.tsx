@@ -80,20 +80,23 @@ export const Dashboard = () => {
   // All approved users can see dashboard
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* iOS Style Header */}
-      <div className="bg-white/80 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-10">
-        <div className="safe-top py-4 px-4 sm:px-6">
+    <div className="min-h-screen w-full bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+      {/* iOS Style Header with Gradient */}
+      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white shadow-lg sticky top-0 z-10 status-bar-overlay status-bar-light">
+        <div className="py-2 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-              <p className="text-sm text-gray-600">{currentStore?.name || 'Sistem Kasir'}</p>
+            <div className="flex items-center gap-3">
+              <img src="/icon-192.png" alt="KasirQ" className="h-10 w-10 rounded-xl shadow-md" />
+              <div>
+                <h1 className="text-xl font-bold">Dashboard</h1>
+                <p className="text-xs text-white/80">{currentStore?.name || 'Sistem Kasir'}</p>
+              </div>
             </div>
             <Button 
               variant="ghost" 
               size="icon"
               onClick={handleLogout}
-              className="rounded-full hover:bg-gray-100"
+              className="rounded-full hover:bg-white/20 text-white"
             >
               <LogOut className="h-5 w-5" />
             </Button>
@@ -102,10 +105,10 @@ export const Dashboard = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 space-y-6 pb-safe-bottom">
-        {/* Analytics Cards */}
+        {/* Analytics Cards iOS Style */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {/* Today Revenue */}
-          <Card className="border-0 shadow-sm bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl overflow-hidden">
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 text-white rounded-3xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between mb-3">
                 <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
@@ -126,7 +129,7 @@ export const Dashboard = () => {
           </Card>
 
           {/* Today Transactions */}
-          <Card className="border-0 shadow-sm bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl overflow-hidden">
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600 text-white rounded-3xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between mb-3">
                 <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
@@ -141,7 +144,7 @@ export const Dashboard = () => {
           </Card>
 
           {/* Total Products */}
-          <Card className="border-0 shadow-sm bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl overflow-hidden">
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-500 via-violet-600 to-pink-600 text-white rounded-3xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between mb-3">
                 <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
@@ -156,7 +159,7 @@ export const Dashboard = () => {
           </Card>
 
           {/* Growth Indicator */}
-          <Card className="border-0 shadow-sm bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-2xl overflow-hidden">
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-orange-500 via-red-500 to-pink-600 text-white rounded-3xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between mb-3">
                 <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm">

@@ -52,10 +52,10 @@ export const PPOB = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-blue-50 to-purple-50">
       {/* Header iOS Style */}
-      <div className="bg-white/90 backdrop-blur-xl border-b border-gray-200/50 fixed top-0 z-10 w-full shadow-sm">
-        <div className="safe-top py-4 px-4 sm:px-6">
+      <div className="bg-white/95 backdrop-blur-xl border-b border-gray-200/50 fixed top-0 z-10 w-full shadow-md status-bar-overlay status-bar-dark">
+        <div className="py-1 px-4 sm:px-6">
           <div className="flex items-center justify-between max-w-6xl mx-auto">
             <div className="flex items-center gap-3">
               <Button 
@@ -66,8 +66,9 @@ export const PPOB = () => {
               >
                 <ArrowLeft className="h-5 w-5" />
               </Button>
+              <img src="/icon-192.png" alt="KasirQ" className="h-9 w-9 rounded-xl shadow-sm" />
               <div>
-                <h1 className="text-xl font-bold text-gray-900">PPOB</h1>
+                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">PPOB</h1>
                 <p className="text-xs text-gray-600">Pembayaran Online</p>
               </div>
             </div>
@@ -85,17 +86,17 @@ export const PPOB = () => {
 
       {/* Tabs iOS Style */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <div className="bg-white/90 backdrop-blur-xl border-b border-gray-200/50 sticky top-[76px] z-10">
-          <TabsList className="w-full h-12 bg-transparent rounded-none border-0 grid grid-cols-2 max-w-6xl mx-auto">
+        <div className="bg-white/95 backdrop-blur-xl border-b border-gray-200/50 sticky top-[60px] z-10 shadow-md">
+          <TabsList className="w-full h-14 bg-transparent rounded-none border-0 grid grid-cols-2 gap-2 p-2 max-w-6xl mx-auto">
             <TabsTrigger 
               value="beranda" 
-              className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none font-semibold text-gray-500"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-2xl font-semibold transition-all"
             >
               Beranda
             </TabsTrigger>
             <TabsTrigger 
               value="riwayat"
-              className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none font-semibold text-gray-500"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-2xl font-semibold transition-all"
             >
               Riwayat
             </TabsTrigger>
@@ -105,21 +106,27 @@ export const PPOB = () => {
         <div className="max-w-6xl mx-auto px-4 py-6 space-y-6 pb-32 pt-32">
           <TabsContent value="beranda" className="space-y-6 mt-0">
             {/* Deposit Card iOS Style */}
-            <Card className="border-0 shadow-md bg-gradient-to-br from-blue-500 to-blue-600 overflow-hidden rounded-3xl">
+            <Card className="border-0 shadow-xl rounded-3xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white overflow-hidden transform hover:scale-[1.02] transition-all">
               <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-white/80 mb-2 font-medium">Saldo Deposit</p>
-                    <p className="text-4xl font-bold text-white mb-1">Rp {depositAmount.toLocaleString('id-ID')}</p>
-                    <p className="text-xs text-white/70">Tersedia untuk transaksi</p>
+                <div className="flex items-start justify-between">
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-white/80">Saldo Deposit</p>
+                    <p className="text-3xl font-bold">
+                      Rp {depositAmount.toLocaleString('id-ID')}
+                    </p>
+                    <Button 
+                      onClick={handleDeposit}
+                      variant="secondary" 
+                      size="sm" 
+                      className="bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-sm rounded-xl"
+                    >
+                      <Plus className="h-4 w-4 mr-1" />
+                      Isi Saldo
+                    </Button>
                   </div>
-                  <Button 
-                    onClick={handleDeposit}
-                    className="bg-white hover:bg-white/90 text-blue-600 font-bold shadow-lg rounded-full px-6 h-12"
-                  >
-                    <Plus className="h-5 w-5 mr-2" />
-                    Deposit
-                  </Button>
+                  <div className="bg-white/20 p-3 rounded-2xl backdrop-blur-sm">
+                    <Wallet className="h-6 w-6" />
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -148,15 +155,22 @@ export const PPOB = () => {
             <div className="space-y-4">
               <h2 className="font-bold text-xl text-gray-900 px-1">Prabayar</h2>
               <div className="grid grid-cols-4 gap-4">
-                {prabayarCategories.map((category) => {
+                {prabayarCategories.map((category, idx) => {
                   const Icon = category.icon;
+                  const gradients = [
+                    'from-blue-500 via-blue-600 to-cyan-500',
+                    'from-purple-500 via-violet-600 to-pink-500',
+                    'from-yellow-500 via-orange-500 to-red-500',
+                    'from-green-500 via-emerald-600 to-teal-500',
+                    'from-red-500 via-pink-500 to-rose-600'
+                  ];
                   return (
                     <button
                       key={category.id}
                       onClick={() => handleCategoryClick(category.id)}
                       className="flex flex-col items-center gap-3 p-4 rounded-3xl bg-white shadow-md hover:shadow-lg transition-all active:scale-95 border border-gray-100/50"
                     >
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[idx % gradients.length]} flex items-center justify-center shadow-md`}>
                         <Icon className="h-8 w-8 text-white" />
                       </div>
                       <span className="text-xs text-center font-semibold text-gray-800 leading-tight">{category.name}</span>
@@ -170,15 +184,23 @@ export const PPOB = () => {
             <div className="space-y-4">
               <h2 className="font-bold text-xl text-gray-900 px-1">Pascabayar</h2>
               <div className="grid grid-cols-4 gap-4">
-                {pascabayarCategories.map((category) => {
+                {pascabayarCategories.map((category, idx) => {
                   const Icon = category.icon;
+                  const gradients = [
+                    'from-indigo-500 via-purple-600 to-pink-600',
+                    'from-yellow-400 via-amber-500 to-orange-600',
+                    'from-teal-500 via-cyan-600 to-blue-600',
+                    'from-rose-500 via-pink-600 to-purple-600',
+                    'from-emerald-500 via-green-600 to-teal-600',
+                    'from-orange-500 via-red-500 to-pink-600'
+                  ];
                   return (
                     <button
                       key={category.id}
                       onClick={() => handleCategoryClick(category.id)}
                       className="flex flex-col items-center gap-3 p-4 rounded-3xl bg-white shadow-md hover:shadow-lg transition-all active:scale-95 border border-gray-100/50"
                     >
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-md">
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[idx % gradients.length]} flex items-center justify-center shadow-md`}>
                         <Icon className="h-8 w-8 text-white" />
                       </div>
                       <span className="text-xs text-center font-semibold text-gray-800 leading-tight">{category.name}</span>

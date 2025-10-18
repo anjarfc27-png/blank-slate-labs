@@ -183,7 +183,13 @@ export default function AddProductForm({ onAddProduct, onUpdateProduct, products
     setSuggestions([]);
   };
 
-  const handleScanBarcode = async () => {
+  const handleScanBarcode = async (e?: React.MouseEvent) => {
+    // Prevent any navigation or form submission
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
     try {
       if (!Capacitor.isNativePlatform()) {
         toast.error('Barcode scanner hanya tersedia di aplikasi mobile');

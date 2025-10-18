@@ -426,8 +426,8 @@ Profit: ${formatPrice(receipt.profit)}
   return (
     <div className="min-h-screen w-full bg-background pb-safe-bottom">
       {/* Header - Fixed with safe area */}
-      <header className="fixed top-0 z-50 border-b bg-card shadow-sm w-full">
-        <div className="w-full px-2 sm:px-4 py-3 sm:py-4 safe-top">
+      <header className="fixed top-0 z-50 border-b bg-card shadow-sm w-full status-bar-overlay">
+        <div className="w-full px-2 sm:px-4 py-0.5 sm:py-1">
           <div className="flex items-center justify-between">
             <div 
               onClick={() => navigate('/settings', { replace: true })} 

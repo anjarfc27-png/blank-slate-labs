@@ -23,15 +23,21 @@ export const BluetoothManager = () => {
       if (success) {
         toast.success('Berhasil terhubung ke Thermal Printer');
       } else {
-        toast.error('Koneksi dibatalkan atau printer tidak ditemukan');
+        // User cancelled or printer not found - show info, not error
+        toast.info('Koneksi Bluetooth dibatalkan', {
+          description: 'Anda membatalkan pemilihan printer'
+        });
       }
     } catch (error: any) {
       console.error('Connection error:', error);
       
-      // More specific error messages for mobile users
-      if (error.message?.includes('User cancelled') || 
+      // Only show error toast for real errors, not user cancellation
+      if (error.message?.toLowerCase().includes('user cancelled') || 
+          error.message?.toLowerCase().includes('cancel') ||
           error.name === 'NotFoundError') {
-        toast.info('Koneksi dibatalkan oleh pengguna');
+        toast.info('Koneksi Bluetooth dibatalkan', {
+          description: 'Anda membatalkan pemilihan printer'
+        });
       } else if (error.message?.includes('timeout')) {
         toast.error('Koneksi timeout. Pastikan printer dalam jangkauan dan mode pairing aktif.');
       } else if (error.message?.includes('GATT_ERROR')) {

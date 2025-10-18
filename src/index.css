@@ -21,6 +21,20 @@
   padding-right: env(safe-area-inset-right);
 }
 
+/* Status Bar Overlay Support - iOS Style */
+.status-bar-overlay {
+  padding-top: calc(env(safe-area-inset-top) + 8px);
+}
+
+/* Status Bar Text Color Control */
+.status-bar-dark {
+  --status-bar-style: dark;
+}
+
+.status-bar-light {
+  --status-bar-style: light;
+}
+
 @layer base {
   :root {
     /* POS Background colors */
@@ -151,8 +165,8 @@
 
   body {
     @apply bg-background text-foreground font-sans;
-    /* iOS safe area support */
-    padding-top: env(safe-area-inset-top);
+    /* iOS safe area support - no top padding for overlay status bar */
+    padding-top: 0;
     padding-bottom: env(safe-area-inset-bottom);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
@@ -269,5 +283,44 @@ body.scanner-active .scanner-ui {
   
   .safe-right {
     padding-right: env(safe-area-inset-right);
+  }
+
+  /* iOS-style shadows */
+  .ios-shadow-sm {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  }
+
+  .ios-shadow {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  .ios-shadow-lg {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  /* iOS-style smooth animations */
+  .ios-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ios-hover:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 }

@@ -18,11 +18,13 @@ class ThermalPrinter {
     } catch (error: any) {
       console.error('Connection failed:', error);
       
-      // Handle user cancellation gracefully
-      if (error.message?.includes('User cancelled') || 
+      // Handle user cancellation gracefully - don't throw error
+      if (error.message?.toLowerCase().includes('user cancelled') || 
+          error.message?.toLowerCase().includes('cancel') ||
           error.name === 'NotFoundError' ||
-          error.message?.includes('cancel')) {
-        return false;
+          error.code === 8) {
+        console.log('User cancelled Bluetooth pairing');
+        return false; // Return false without throwing
       }
       
       throw error;
