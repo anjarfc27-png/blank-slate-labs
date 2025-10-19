@@ -53,9 +53,9 @@ export const PPOB = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-blue-50 to-purple-50">
-      {/* Header iOS Style */}
+      {/* Header iOS Style with Better Padding */}
       <div className="bg-white/95 backdrop-blur-xl border-b border-gray-200/50 fixed top-0 z-10 w-full shadow-md status-bar-overlay status-bar-dark">
-        <div className="py-1 px-4 sm:px-6">
+        <div className="py-4 px-4 sm:px-6">
           <div className="flex items-center justify-between max-w-6xl mx-auto">
             <div className="flex items-center gap-3">
               <Button 
@@ -86,7 +86,7 @@ export const PPOB = () => {
 
       {/* Tabs iOS Style */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <div className="bg-white/95 backdrop-blur-xl border-b border-gray-200/50 sticky top-[60px] z-10 shadow-md">
+        <div className="bg-white/95 backdrop-blur-xl border-b border-gray-200/50 sticky top-[88px] z-10 shadow-md">
           <TabsList className="w-full h-14 bg-transparent rounded-none border-0 grid grid-cols-2 gap-2 p-2 max-w-6xl mx-auto">
             <TabsTrigger 
               value="beranda" 
@@ -103,7 +103,7 @@ export const PPOB = () => {
           </TabsList>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 py-6 space-y-6 pb-32 pt-32">
+        <div className="max-w-6xl mx-auto px-4 py-6 space-y-6 pb-32 pt-40">
           <TabsContent value="beranda" className="space-y-6 mt-0">
             {/* Deposit Card iOS Style */}
             <Card className="border-0 shadow-xl rounded-3xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white overflow-hidden transform hover:scale-[1.02] transition-all">

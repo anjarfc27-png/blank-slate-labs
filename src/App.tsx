@@ -22,6 +22,7 @@ import { PPOB } from "@/pages/PPOB";
 import { SubscriptionManagement } from "@/pages/admin/SubscriptionManagement";
 import { PPOBNavButton } from "@/components/Navigation/PPOBNavButton";
 import { AdminPanel } from "@/pages/AdminPanel";
+import { Analytics } from "@/pages/Analytics";
 
 // Create QueryClient outside component to prevent recreation on every render
 const queryClient = new QueryClient({
@@ -72,6 +73,11 @@ const App = () => {
                     <Route path="/settings" element={
                       <ProtectedRoute>
                         <StoreSettings />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/analytics" element={
+                      <ProtectedRoute>
+                        <Analytics />
                       </ProtectedRoute>
                     } />
                     <Route path="/admin" element={

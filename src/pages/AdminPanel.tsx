@@ -32,42 +32,74 @@ export const AdminPanel = () => {
     },
     {
       id: 'subscriptions',
-      title: 'Subscription',
-      description: 'Kelola langganan user',
+      title: 'Subscription & Billing',
+      description: 'Kelola langganan dan pembayaran',
       icon: Calendar,
       color: 'from-purple-500 to-purple-600',
       route: '/admin/subscriptions'
     },
     {
+      id: 'analytics',
+      title: 'Analytics & Reports',
+      description: 'Dashboard analitik lengkap',
+      icon: TrendingUp,
+      color: 'from-emerald-500 to-green-600',
+      route: '/analytics'
+    },
+    {
       id: 'backup',
       title: 'Backup & Restore',
-      description: 'Kelola backup database',
+      description: 'Kelola backup database otomatis',
       icon: Database,
-      color: 'from-green-500 to-emerald-600',
+      color: 'from-cyan-500 to-blue-600',
       route: '/backup-restore'
     },
     {
       id: 'reports',
-      title: 'Laporan',
-      description: 'Lihat laporan dan analitik',
+      title: 'Laporan Transaksi',
+      description: 'Export dan lihat laporan detail',
       icon: FileText,
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-orange-500 to-amber-600',
       route: '/reports'
     },
     {
       id: 'products',
-      title: 'Produk',
-      description: 'Manajemen produk sistem',
+      title: 'Manajemen Produk',
+      description: 'Kelola produk dan inventory',
       icon: Package,
-      color: 'from-pink-500 to-pink-600',
+      color: 'from-pink-500 to-rose-600',
       route: '/pos'
     },
     {
+      id: 'payments',
+      title: 'Payment Gateway',
+      description: 'Integrasi pembayaran digital',
+      icon: CreditCard,
+      color: 'from-violet-500 to-purple-600',
+      route: '/admin/payments'
+    },
+    {
+      id: 'notifications',
+      title: 'Notification Center',
+      description: 'Kelola notifikasi sistem',
+      icon: Bell,
+      color: 'from-yellow-500 to-orange-500',
+      route: '/admin/notifications'
+    },
+    {
+      id: 'security',
+      title: 'Security & Access',
+      description: 'Keamanan dan kontrol akses',
+      icon: Shield,
+      color: 'from-red-500 to-pink-600',
+      route: '/admin/security'
+    },
+    {
       id: 'settings',
-      title: 'Pengaturan',
+      title: 'System Settings',
       description: 'Konfigurasi toko dan sistem',
       icon: Settings,
-      color: 'from-gray-500 to-gray-600',
+      color: 'from-gray-500 to-slate-600',
       route: '/settings'
     },
   ];
@@ -187,10 +219,10 @@ export const AdminPanel = () => {
           </Card>
         </div>
 
-        {/* Admin Menu Grid - iOS Style */}
+        {/* Admin Menu Grid - Professional Layout */}
         <div className="space-y-3">
           <h2 className="text-lg font-bold text-gray-900 px-1">Menu Administrator</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {adminMenus.map((menu) => {
               const Icon = menu.icon;
               return (

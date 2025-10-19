@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { Store, Users, LogOut, Smartphone, TrendingUp, Activity } from 'lucide-react';
+import { Store, Users, LogOut, Smartphone, TrendingUp, Activity, Settings, BarChart3 } from 'lucide-react';
 import { useStore } from '@/contexts/StoreContext';
 
 export const Dashboard = () => {
@@ -33,9 +33,9 @@ export const Dashboard = () => {
 
   return (
     <div className="min-h-screen w-full bg-gray-50">
-      {/* Larger Header */}
+      {/* Header with Better Padding */}
       <div className="bg-white border-b border-gray-200 status-bar-overlay status-bar-dark">
-        <div className="py-6 px-4 sm:px-6">
+        <div className="py-10 px-4 sm:px-6">
           <div className="max-w-2xl mx-auto">
             <div className="flex items-center justify-end mb-4">
               <Button 
@@ -56,30 +56,36 @@ export const Dashboard = () => {
       </div>
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6 space-y-4 pb-safe-bottom">
-        {/* Status Cards */}
+        {/* Quick Access Cards */}
         <div className="grid grid-cols-2 gap-3">
           {/* Analytics Dashboard */}
-          <Card className="border border-gray-200 shadow-sm rounded-2xl bg-white">
+          <Card 
+            className="border border-gray-200 shadow-sm rounded-2xl bg-white cursor-pointer hover:shadow-md transition-all active:scale-95"
+            onClick={() => navigate('/analytics')}
+          >
             <CardContent className="p-5 text-center space-y-2">
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto">
-                <TrendingUp className="h-6 w-6 text-blue-600" />
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mx-auto shadow-md">
+                <BarChart3 className="h-6 w-6 text-white" />
               </div>
               <div>
                 <p className="text-xs text-gray-500 mb-1">Analytics</p>
-                <p className="text-lg font-bold text-gray-900">Dashboard</p>
+                <p className="text-base font-bold text-gray-900">Dashboard</p>
               </div>
             </CardContent>
           </Card>
 
-          {/* Status Online */}
-          <Card className="border border-gray-200 shadow-sm rounded-2xl bg-white">
+          {/* Pengaturan Toko */}
+          <Card 
+            className="border border-gray-200 shadow-sm rounded-2xl bg-white cursor-pointer hover:shadow-md transition-all active:scale-95"
+            onClick={() => navigate('/settings')}
+          >
             <CardContent className="p-5 text-center space-y-2">
-              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto">
-                <Activity className="h-6 w-6 text-green-600" />
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mx-auto shadow-md">
+                <Settings className="h-6 w-6 text-white" />
               </div>
               <div>
-                <p className="text-xs text-gray-500 mb-1">Status</p>
-                <p className="text-lg font-bold text-green-600">Online</p>
+                <p className="text-xs text-gray-500 mb-1">Pengaturan</p>
+                <p className="text-base font-bold text-gray-900">Toko</p>
               </div>
             </CardContent>
           </Card>
